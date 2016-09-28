@@ -27,11 +27,11 @@
             <br>
             <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">Submit</button>
             <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%" 
-            ng-bind="picFile.progress + '%'"></div>
-      </span>
+            <div style="width:{{picFile.progress}}%" 
+                 ng-bind="picFile.progress + '%'"></div>
+            </span>
             <span ng-show="picFile.result">Upload Successful</span>
-            </br>
+            
             <span class="err" ng-show="errorMsg">Error: {{errorMsg}}</span>
         </fieldset>
         <br>
