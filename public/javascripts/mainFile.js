@@ -1,7 +1,7 @@
-  var FileApp = angular.module("FileApp", ['ngFileUpload']);
+  var FileApp = angular.module("FileApp", []);
 
 
-  FileApp.controller("FileController", function($scope, Upload, $timeout) {
+  FileApp.controller("FileController", function($scope, $timeout) {
 
     $scope.fileChange = function(fileValue) {
           console.log(fileValue);
