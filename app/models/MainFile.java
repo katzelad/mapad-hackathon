@@ -4,7 +4,7 @@ import java.io.File;
 
 public class MainFile {
 
-	public static String getFileByName = "_file";
+	public static String _getFileByName = "file";
 	
 	
 	
