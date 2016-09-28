@@ -5,7 +5,7 @@ import os
 import numpy as np
 
 def read_image(file_name):
-    return cv2.imread(os.path.join("c:/users/elad/dev/mapad-hackathon/image-to-loc/res", file_name))
+    return cv2.imread(os.path.join("res", file_name))
 
 def display_image(image):
     cv2.imshow("hackathon", image)
@@ -18,7 +18,7 @@ def overlay_image(bottom, top, loc):
             bottom[loc[0] + x][loc[1] + y] = top[x][y]
     
 image = read_image("rg.png")
-pattern = read_image("rg_pattern.png")
+pattern = read_image("rg_pattern_dirty.png")
 match_mat = cv2.matchTemplate(image, pattern, cv2.TM_CCOEFF)
 _, score, _, loc = cv2.minMaxLoc(match_mat)
 mod_image = np.copy(image)
