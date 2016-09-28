@@ -28,16 +28,10 @@
                 <form name="myForm" ng-controller="fileUploadCtrl">
                     <fieldset>
                         <legend>Upload file</legend>
-                        Username:
-                        <input type="text" name="userName" ng-model="username" size="31" class="btn-group" required>
-                        <i ng-show="myForm.userName.$error.required">*required</i>
                         <br>
-                        <button type="button" ngf-select ng-model="picFile" class="btn btn-default" name="file" accept="image/*" ngf-max-size="200MB" required ngf-model-invalid="errorFile">בחר קובץ</button>
-                        <i ng-show="myForm.file.$error.required">*required</i>
+                        <button type="button" ngf-select ng-model="picFile" class="btn btn-default" name="file" accept="image/*"  required>בחר קובץ</button>
+                        <i ng-show="myForm.file.$error.required" style="margin-left:50px;color:red;">*required</i>
                         <br>
-                        <i ng-show="myForm.file.$error.maxSize">File too large 
-          {{errorFile.size / 1000000|number:1}}MB: max 200M</i>
-                        <!--                        <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">-->
                         <button ng-click="picFile = null" ng-show="picFile" class="btn-group">Remove</button>
                         <br>
                         <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)" class="btn btn-default">Submit</button>
