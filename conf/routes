@@ -3,10 +3,11 @@
 # ~~~~
 
 # Home page
-GET   /           controllers.Assets.at(path="/public/views",file="madgim.html")
+GET   /                   controllers.Assets.at(path="/public/views",file="madgim.html")
+POST  /clientFile/upload  controllers.FileCtrl.getFileUpload()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file             controllers.Assets.at(path="/public", file)
 GET          /assets/*file        controllers.Assets.at(path="/public/views",file)
 GET          /assets/*file        controllers.Assets.at(path="/public/javascripts",file)
 GET          /assets/*file        controllers.Assets.at(path="/public/stylesheets",file)
