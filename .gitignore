@@ -20,3 +20,6 @@ server.pid
 .project
 .settings
 image-to-loc/.*
+/bin/
+/bin/
+/bin/
