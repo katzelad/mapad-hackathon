@@ -144,6 +144,35 @@
                 });
                 map.fitBounds(bounds);
             });
+            
+                // or's code added here
+                // ----------------------------
+                debugger;
+                var bounds = new google.maps.LatLngBounds(
+                    new google.maps.LatLng(31.771959, 35.217018),
+                    new google.maps.LatLng(31.971959, 35.417018));
+                
+                // The photograph is courtesy of the U.S. Geological Survey.
+                var srcImage = "C:\\GitProjects\\mapad-hackathon\\files\\pic_01.jpg";
+
+                // The custom USGSOverlay object contains the USGS image,
+                // the bounds of the image, and a reference to the map.
+                overlay = new USGSOverlay(bounds, srcImage, map);
+                
+                function USGSOverlay(bounds, image, map) {
+                    // Initialize all properties.
+                    this.bounds_ = bounds;
+                    this.image_ = image;
+                    this.map_ = map;
+
+                    // Define a property to hold the image's div. We'll
+                    // actually create this div upon receipt of the onAdd()
+                    // method so we'll leave it null for now.
+                    this.div_ = null;
+
+                    // Explicitly call setMap on this overlay.
+                    this.setMap(map);
+                  }
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-jE1pG8RYjSR1rc7AkNbxJ2ZVdxGhAEw&libraries=places&callback=initAutocomplete" async defer></script>
