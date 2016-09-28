@@ -23,18 +23,18 @@
 
     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="height:250px">
 
                 <form name="myForm" ng-controller="fileUploadCtrl">
                     <fieldset>
                         <legend>Upload file</legend>
                         <br>
-                        <button type="button" ngf-select ng-model="picFile" class="btn btn-default" name="file" accept="image/*"  required>בחר קובץ</button>
+                        <button type="button" ngf-select ng-model="picFile" class="btn btn-default" name="file" accept="image/*" style="margin-left:25px;margin-bottom:20px" required>בחר קובץ</button>
                         <i ng-show="myForm.file.$error.required" style="margin-left:50px;color:red;">*required</i>
                         <br>
-                        <button ng-click="picFile = null" ng-show="picFile" class="btn-group">Remove</button>
+                        <button ng-click="picFile = null" ng-show="picFile" class="btn btn-default" style="margin-top:10px;margin-left:23px;">Remove</button>
                         <br>
-                        <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)" class="btn btn-default">Submit</button>
+                        <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)" class="btn btn-success" style="margin-left:25px;width:200px;margin-bottom:15px;">Submit</button>
                         <span class="progress" ng-show="picFile.progress >= 0">
         <div style="width:{{picFile.progress}}%" 
             ng-bind="picFile.progress + '%'"></div>
