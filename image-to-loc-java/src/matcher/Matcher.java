@@ -12,7 +12,7 @@ public class Matcher {
 	public static void main(String[] args) {
 
 		MatcherResult res = match("../image-to-loc/res/rg.png", "../image-to-loc/res/rg_pattern5.png");
-		System.out.printf("location: (%d, %d)\n", res.x, res.y);
+		System.out.printf("location: (%d, %d)\n", res.left, res.top);
 		System.out.printf("scale: %f\n", res.scale);
 		System.out.printf("score: %f\n", res.score);
 
@@ -36,8 +36,10 @@ public class Matcher {
 			if (mmlr.maxVal > res.score) {
 				res.score = mmlr.maxVal;
 				res.scale = scale;
-				res.x = (int) mmlr.maxLoc.x;
-				res.y = (int) mmlr.maxLoc.y;
+				res.left = (int) mmlr.maxLoc.x;
+				res.top = (int) mmlr.maxLoc.y;
+				res.right = res.left + scaledPattern.width();
+				res.bottom = res.top + scaledPattern.height();
 			}
 		}
 
