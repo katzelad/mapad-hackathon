@@ -36,7 +36,6 @@ function initAutocomplete() {
     }
     
     // drawing custom layer
-    debugger;
     if (customLayerSRC != null && customLayerBOUNDS != null)
     {
         drawCustomLayer(customLayerSRC, customLayerBOUNDS);
@@ -214,39 +213,21 @@ function initAutocomplete() {
                   headers: {
                       'Content-Type': undefined
                   }
+              }).success(function(success) {
+                  debugger;
+//                  $('.modal-content').modal().hide();
+//                  $(".modal-content").css({ opacity: 0 });
               }).error(function(err) {
-                  console.log("error");
-              })
-
+                  console.log("error uploaded your file");
+              }).then(function(){
+                    $('.modal-content').modal().hide();
+              });
           }
+          
+          
+//        $('#modalFileUpload').on('hidden', function (e) {
+//            debugger;
+//            alert('d');
+//            });
       }
   ]);
-
-  FileApp.controller("FileController", function($scope, $timeout) {
-
-      $scope.fileChange = function(fileValue) {
-          console.log(fileValue);
-      }
-
-      $scope.uploadPic = function(file) {
-          file.upload = Upload.upload({
-              url: 'C:\GitProjects\mapad-hackathon\files\orYoung.pptx',
-              data: {
-                  username: $scope.username,
-                  file: file
-              },
-          });
-
-          file.upload.then(function(response) {
-              $timeout(function() {
-                  file.result = response.data;
-              });
-          }, function(response) {
-              if (response.status > 0)
-                  $scope.errorMsg = response.status + ': ' + response.data;
-          }, function(evt) {
-              // Math.min is to fix IE which reports 200% sometimes
-              file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-          });
-      }
-  });
