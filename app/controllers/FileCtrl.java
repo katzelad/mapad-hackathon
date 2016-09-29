@@ -57,7 +57,7 @@ public class FileCtrl extends Controller {
 					node.put("right", xToLon(matchRes.getRight()));
 					node.put("bottom", yToLat(matchRes.getBottom()));
 					node.put("scale", matchRes.getScale());
-					node.put("imagePath", "assets/PowerPointSlidesData/pic" + i + ".png");
+					node.put("imagePath", "/assets/PowerPointSlidesData/pic" + i + ".png");
 					try (Scanner input = new Scanner(new File("public/PowerPointSlidesData/title" + i + ".txt"))) {
 						node.put("title", input.nextLine());
 					}

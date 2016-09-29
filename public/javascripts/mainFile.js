@@ -1,16 +1,19 @@
 var isMapLoaded = false;
 var customLayerSRC = null;
 var customLayerBOUNDS = null;
+var customLayersData = null;
 
-function getCustomLayerProperties(src, bounds)
+function getCustomLayerProperties(src, bounderies)
 {
     customLayerSRC = src;
-    customLayerBOUNDS = bounds;
+    customLayerBOUNDS = bounderies;
+//    customLayersData = customLayersDataRequest;
     initAutocomplete();
 }
 
 function initAutocomplete() {
-    if (!isMapLoaded)
+    debugger;
+    if (!isMapLoaded || true)
     {
         var map = new google.maps.Map(document.getElementById('map'), {
             center: {
@@ -22,15 +25,17 @@ function initAutocomplete() {
             mapTypeId: 'roadmap'
         });
 
+        
+        
         // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
+//        var input = document.getElementById('pac-input');
+//        var searchBox = new google.maps.places.SearchBox(input);
+//        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+//
+//        // Bias the SearchBox results towards current map's viewport.
+//        map.addListener('bounds_changed', function() {
+//          searchBox.setBounds(map.getBounds());
+//        });
         
         isMapLoaded = true;
     }
@@ -44,21 +49,25 @@ function initAutocomplete() {
         customLayerBOUNDS = null;
     }
     
-    function drawCustomLayer(src, bounds)
+    function drawCustomLayer(srcImage, bounderies)
     {
-        var overlay;
+        let overlay;
         USGSOverlay.prototype = new google.maps.OverlayView();
-        var bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(31.771959, 35.217018),
-            new google.maps.LatLng(31.971959, 35.417018));
+        let bounds = new google.maps.LatLngBounds(
+//            new google.maps.LatLng(32.0824669, 34.818229),
+//            new google.maps.LatLng(32.089307, 34.823809));
+            new google.maps.LatLng(bounderies[0], bounderies[1]),
+            new google.maps.LatLng(bounderies[2], bounderies[3]));
+//            new google.maps.LatLng(31.771959, 35.217018),
+//            new google.maps.LatLng(31.971959, 35.417018));
 
         // The photograph is courtesy of the U.S. Geological Survey.
-        var srcImage = "/assets/images/Israel_googleMap.png";
+//        var srcImage = "/assets/images/Israel_googleMap.png";
 
         // The custom USGSOverlay object contains the USGS image,
         // the bounds of the image, and a reference to the map.
-        overlay = new USGSOverlay(bounds, srcImage, map);
-    
+        new USGSOverlay(bounds, srcImage, map);
+
         function USGSOverlay(bounds, image, map) {
             // Initialize all properties.
             this.bounds_ = bounds;
@@ -73,7 +82,7 @@ function initAutocomplete() {
             // Explicitly call setMap on this overlay.
             this.setMap(map);
         }
-
+        
     
     
         USGSOverlay.prototype.onAdd = function() {
@@ -133,17 +142,7 @@ function initAutocomplete() {
       
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+     
       
       if (!isMapLoaded)
       { 
@@ -215,6 +214,20 @@ function initAutocomplete() {
                   }
               }).success(function(success) {
                   debugger;
+                  
+                  for(var i = 0; i < success.length; i++)
+                  {
+                    var bounds = [];
+                    bounds.push(success[i].bottom);
+                    bounds.push(success[i].left);
+                    bounds.push(success[i].top);
+                    bounds.push(success[i].right);
+                    var src = success[i].imagePath;
+                      
+                    getCustomLayerProperties(src, bounds);
+                  }
+                  
+                  
 //                  $('.modal-content').modal().hide();
 //                  $(".modal-content").css({ opacity: 0 });
               }).error(function(err) {
@@ -231,3 +244,26 @@ function initAutocomplete() {
 //            });
       }
   ]);
+
+//FileApp.controller('GroundoverlayCustomCtrl', ['$scope', '$timeout', '$http', 'NgMap',
+//      function($scope, $timeout, $http, NgMap) {
+//          NgMap.getMap().then(function(map) {
+//          var swBound = new google.maps.LatLng(62.281819, -150.287132);
+//          var neBound = new google.maps.LatLng(62.400471, -150.005608);
+//          var bounds = new google.maps.LatLngBounds(swBound, neBound);
+//          var srcImage = 'https://developers.google.com/maps/documentation/javascript/';
+//          srcImage += 'examples/full/images/talkeetna.png';
+//          new USGSOverlay(bounds, srcImage, map);
+//      }
+//]};
+
+
+
+
+
+
+
+
+
+
+

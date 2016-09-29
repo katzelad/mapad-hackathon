@@ -5,6 +5,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/stylesheets/madgimStyle.css">
     <link rel="stylesheet" href="assets/stylesheets/fileUpload.css">
+    
+<!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps-street-view.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps-street-view.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps-street-view_dev_mapped.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps-street-view_dev_mapped.js.map"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps-street-view_dev_mapped.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps-street-view_dev_mapped.min.js.map"></script>
+-->
+<!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps_dev_mapped.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps_dev_mapped.js.map"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.4.0/angular-google-maps_dev_mapped.min.js"></script>
+-->
+    
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
     <script src="https://cdn.jsdelivr.net/angular.file-upload/12.2.11/ng-file-upload-shim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/angular.file-upload/12.2.11/ng-file-upload.min.js"></script>
@@ -21,12 +38,10 @@
 
 <body>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">לחץ כאן להעלת קובץ</button>
-    <button type="button" class="btn btn-primary" onclick="getCustomLayerProperties('1', '2')">testtttttto</button>
-
+    
     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div  ng-model="modalFileUpload" id ="modalFileUpload" style="background-color:white;">
-<!--            class="modal-content"-->
                 <form name="myForm" ng-controller="fileUploadCtrl">
                     <fieldset>
                         <legend>Upload file</legend>
@@ -50,10 +65,15 @@
             </div>
         </div>
     </div>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<!--    <input id="pac-input" class="controls" type="text" placeholder="Search Box">-->
 
-
-    <div id="map"></div>
+<!--    <div ng-controller="GroundoverlayCustomCtrl">x-->
+        <div id="map"></div>
+<!--
+        <ng-map zoom="11" center="62.323907, -150.109291" map-type-id="SATELLITE">
+        </ng-map>
+-->
+<!--    </div>-->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-jE1pG8RYjSR1rc7AkNbxJ2ZVdxGhAEw&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
