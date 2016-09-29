@@ -19,7 +19,7 @@ import org.apache.poi.xslf.usermodel.XSLFSlideMaster;
 import com.sun.prism.paint.Color;
 
 public class OfficeReader {
-	public static void readPowerPoint(File file) throws FileNotFoundException, IOException
+	public static int readPowerPoint(File file) throws FileNotFoundException, IOException
 	{
 		XMLSlideShow ppt = new XMLSlideShow(new FileInputStream(file));
 		XSLFSlide[] slides = ppt.getSlides();
@@ -66,10 +66,11 @@ public class OfficeReader {
 			
 			
 			
-			for(int i = 0; i < slides.length; i++)
-			{
-				XSLFShape[] shapes = slides[i].getShapes();
-			}
+		// for(int i = 0; i < slides.length; i++)
+		// {
+		// XSLFShape[] shapes = slides[i].getShapes();
+		// }
+			return slides.length;
 
 	}
 }
