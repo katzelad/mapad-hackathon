@@ -7,6 +7,19 @@
        #map {
            height: 100%;
        }
+
+.modal-backdrop{
+  opacity:0; transition:opacity .2s;
+}
+.modal-backdrop.in{
+  opacity:.7;
+}
+
+
+
+       .pac-container {
+           font-family: Roboto;
+       }
        .controls {
            margin-top: 10px;
            border: 1px solid transparent;
@@ -29,9 +42,6 @@
        }
        #pac-input:focus {
            border-color: #4d90fe;
-       }
-       .pac-container {
-           font-family: Roboto;
        }
        #type-selector {
            color: #fff;
